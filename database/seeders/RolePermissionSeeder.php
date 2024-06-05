@@ -1,65 +1,49 @@
 <?php
-namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
 use App\Models\User;
 
 class RolePermissionSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        // Create permissions based on routes in web.php
+        // Define permissions
         $permissions = [
             'manage statistics',
-            'manage teams',
-            'manage programs',
-            'manage blogs',
             'manage hero sections',
             'manage abouts',
-            'manage keypoints',
+            'manage programs',
+            'manage blogs',
             'manage events',
             'manage categories',
-            'manage authors',
-            'manage clients',
+            'manage client',
             'manage schedules',
-            'manage faqs',
+            'manage authors',
+            'manage keypoints',
         ];
 
+        // Create permissions if they do not exist
         foreach ($permissions as $permission) {
             Permission::firstOrCreate(['name' => $permission]);
         }
 
-        // Create roles
-        $superAdminRole = Role::firstOrCreate(['name' => 'super_admin']);
-        $authorRole = Role::firstOrCreate(['name' => 'author']);
-
-        // Assign permissions to roles
-        $superAdminRole->givePermissionTo(Permission::all());
-
+        // Define permissions for author role
         $authorPermissions = [
             'manage blogs',
-            'manage categories',
+            'manage categories'
         ];
 
-        $authorRole->syncPermissions($authorPermissions);
+        // Create super admin role
+        $superAdminRole = Role::firstOrCreate(['name' => 'super_admin']);
 
-        // Create author user
-        $authorUser = User::create([
-            'name' => 'author',
-            'email' => 'author@admin.com',
-            'occupation' => 'Writer',
-            'avatar' => 'images/default-avatar.png',
-            'password' => bcrypt(12345),
-        ]);
-        $authorUser->assignRole('author');
+        // Create author role
+        $authorRole = Role::firstOrCreate(['name' => 'author']);
+
+        // Assign permissions to author role
+        foreach ($authorPermissions as $permission) {
+            $authorRole->givePermissionTo($permission);
+        }
 
         // Create super admin user
         $superAdminUser = User::create([
@@ -67,8 +51,22 @@ class RolePermissionSeeder extends Seeder
             'email' => 'super@admin.com',
             'occupation' => 'Web Developer',
             'avatar' => 'images/default-avatar.png',
-            'password' => bcrypt(12345),
+            'password' => bcrypt('12345'),
         ]);
-        $superAdminUser->assignRole('super_admin');
+
+        // Assign super admin role to super admin user
+        $superAdminUser->assignRole($superAdminRole);
+
+        // Create author user
+        $authorUser = User::create([
+            'name' => 'author',
+            'email' => 'author@admin.com',
+            'occupation' => 'Writer',
+            'avatar' => 'images/default-avatar.png',
+            'password' => bcrypt('12345'),
+        ]);
+
+        // Assign author role to author user
+        $authorUser->assignRole($authorRole);
     }
 }

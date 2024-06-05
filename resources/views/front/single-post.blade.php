@@ -9,7 +9,7 @@
             <span class="text-cp-light-grey">/</span>
             <p class="text-cp-light-grey last-of-type:text-cp-black last-of-type:font-semibold">Blog</p>
             <span class="text-cp-light-grey">/</span>
-            <p class="text-cp-light-grey last-of-type:text-cp-black last-of-type:font-semibold">Daftar Artikel</p>
+            <p class="text-cp-light-grey last-of-type:text-cp-black last-of-type:font-semibold">{{ $blog->category->name }}</p>
           </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
             <span class="date-post text-slate-500 text-sm">{{ $blog->created_at }}</span>
           </div>
           <img src="{{Storage::url($blog->thumbnail)}}" alt="" class="thumbnail-post w-full h-fit object-cover rounded-lg">
-          <p class="content text-slate-500 text-sm">{!! $blog->content !!}</p>
+          <p class="content text-slate-500 text-sm">{!! html_entity_decode($blog->content ) !!}</p>
         </div>
     @else
         <p>Tidak tersedia artikel</p>

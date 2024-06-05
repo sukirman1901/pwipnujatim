@@ -1,4 +1,4 @@
-<nav class="top-10 left-[155px] z-50 max-w-[1130px] w-full flex flex-wrap items-center justify-between bg-white p-[20px_30px] rounded-[20px] gap-y-3 shadow-md">
+<nav class="top-10 left-[155px] z-50 max-w-[1130px] w-full flex flex-wrap items-center justify-between bg-white p-[20px_30px] rounded-[20px] gap-y-3 shadow-sm">
     <a href="{{ route('front.index') }}" class="flex items-center gap-3">
       <div class="flex shrink-0 h-[43px] overflow-hidden">
         <img src="{{ asset('assets/logo/logo.svg') }}" class="object-contain w-full h-full" alt="logo">
