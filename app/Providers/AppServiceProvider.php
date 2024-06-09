@@ -28,10 +28,9 @@ class AppServiceProvider extends ServiceProvider
             if ($user->hasRole('super_admin')) {
                 return true;
             }
-        });
-
-        Gate::define('manage blogs', function ($user) {
-            return $user->hasPermissionTo('manage blogs');
+            if ($user->hasRole('author') && ($ability == 'manage categories' || $ability == 'manage blogs')) {
+                return true;
+            }
         });
     }
 
