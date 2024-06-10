@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="description" content="@yield('meta_description', 'IPNU East Java Provides a nurturing environment for students to develop academically and spiritually, fostering unity and Islamic values')">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 

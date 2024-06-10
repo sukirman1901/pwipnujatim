@@ -18,6 +18,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SchedulesController;
 use App\Models\OrganitationKeypoints;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SitemapController;
+
+Route::get('/sitemap', [SitemapController::class, 'index']);
 
 Route::get('ckeditor', [CkeditorController::class, 'index']);
 

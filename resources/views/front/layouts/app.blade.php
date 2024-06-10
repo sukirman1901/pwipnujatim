@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="{{asset('css/output.css')}}" rel="stylesheet">
+  <meta name="description" content="@yield('meta_description', 'IPNU East Java Provides a nurturing environment for students to develop academically and spiritually, fostering unity and Islamic values')">
   <title>PW IPNU Jatim - The Next Level</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <!-- CSS for carousel/flickity-->
