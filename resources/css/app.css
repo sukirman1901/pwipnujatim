@@ -1,3 +1,81 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .pause-animate {
+        animation-play-state: paused;
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 300ms ease-in-out;
+    }
+
+    /* Aturan umum untuk kelas .content */
+    .content {
+        @apply text-base; /* Menggunakan font-sans (Poppins) dan ukuran teks dasar dari Tailwind */
+    }
+
+    /* Aturan untuk headline level 1 */
+    .content h1 {
+        @apply font-semibold text-2xl; /* Menyesuaikan ukuran teks untuk headline level 1 dan menggunakan font-semibold untuk menonjolkan */
+    }
+
+    /* Aturan untuk headline level 2 */
+    .content h2 {
+        @apply font-semibold text-xl; /* Menyesuaikan ukuran teks untuk headline level 2 dan menggunakan font-semibold untuk menonjolkan */
+    }
+
+    /* Aturan untuk headline level 3 */
+    .content h3 {
+        @apply font-semibold text-lg; /* Menyesuaikan ukuran teks untuk headline level 3 dan menggunakan font-semibold untuk menonjolkan */
+    }
+
+    /* Aturan untuk blockquote */
+    .content blockquote {
+        margin-left: 0; /* Sesuaikan margin untuk blockquote */
+        padding-left: 1rem; /* Sesuaikan padding untuk blockquote */
+        border-left: 4px solid #ccc; /* Tambahkan garis kiri pada blockquote */
+        color: #666; /* Sesuaikan warna teks untuk blockquote */
+        font-style: italic; /* Membuat teks menjadi miring */
+        
+    }
+        /* Aturan untuk gaya tabel */
+    .content table {
+        @apply w-full border-collapse; /* Lebar tabel menjadi penuh dan menggabungkan batas antar sel */
+    }
+
+    /* Aturan untuk sel header tabel */
+    .content table th {
+        @apply px-4 py-2 bg-gray-100 border text-left text-sm font-semibold; /* Padding, warna latar belakang, batas, dan gaya teks untuk sel header */
+    }
+
+    /* Aturan untuk sel data tabel */
+    .content table td {
+        @apply px-4 py-2 border text-left text-sm; /* Padding, batas, dan gaya teks untuk sel data */
+    }
+
+    /* Aturan untuk sel data tabel pada baris ganjil */
+    .content table tr:nth-child(odd) {
+        @apply bg-gray-50; /* Warna latar belakang untuk baris ganjil */
+    }
+
+    /* Aturan untuk sel data tabel saat disorot */
+    .content table tr:hover {
+        @apply bg-gray-200; /* Warna latar belakang saat baris disorot */
+    }
+
+    /* Aturan untuk gaya bullet list */
+    .content ul {
+        @apply list-disc pl-4; /* Mengatur gaya daftar berbulet dengan bullet standar */
+    }
+
+    /* Aturan untuk gaya number list */
+    .content ol {
+        @apply list-decimal pl-4; /* Mengatur gaya daftar bernomor dengan angka standar */
+    }
+
+
+}

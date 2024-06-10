@@ -27,7 +27,7 @@
             <span class="date-post text-slate-500 text-sm">{{ $blog->created_at }}</span>
           </div>
           <img src="{{Storage::url($blog->thumbnail)}}" alt="" class="thumbnail-post w-full h-fit object-cover rounded-lg">
-          <p class="content text-slate-500 text-sm">{!! html_entity_decode($blog->content ) !!}</p>
+          <div class="content text-base">{!! $blog->content !!}</div>
         </div>
     @else
         <p>Tidak tersedia artikel</p>

@@ -4,11 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class AppServiceProvider extends ServiceProvider
 {
+    use HasRoles;
     /**
      * Register any application services.
      */
@@ -26,9 +26,6 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::before(function ($user, $ability) {
             if ($user->hasRole('super_admin')) {
-                return true;
-            }
-            if ($user->hasRole('author') && ($ability == 'manage categories' || $ability == 'manage blogs')) {
                 return true;
             }
         });
